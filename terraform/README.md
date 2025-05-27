@@ -1,26 +1,35 @@
-# Desafio 01: Infrastructure-as-code - Terraform
+# 🚀 Infraestrutura com Terraform
 
-## Motivação
+Este projeto provisiona recursos de infraestrutura usando o Terraform.  
+Você pode adaptá-lo para diferentes provedores como AWS, Azure, GCP, etc.
 
-Recursos de infraestrutura em nubvem devem sempre ser criados utilizando gerenciadores de configuração, tais como [Cloudformation](https://aws.amazon.com/cloudformation/), [Terraform](https://www.terraform.io/) ou [Ansible](https://www.ansible.com/), garantindo que todo recurso possa ser versionado e recriado de forma facilitada.
+---
 
-## Objetivo
+## 📦 Pré-requisitos
 
-- Criar uma instância **n1-standard-1** (GCP) ou **t2.micro** (AWS) Linux utilizando **Terraform**.
-- A instância deve ter aberta somente às portas **80** e **443** para todos os endereços
-- A porta SSH (**22**) deve estar acessível somente para um _range_ IP definido.
-- **Inputs:** A execução do projeto deve aceitar dois parâmetros:
-  - O IP ou _range_ necessário para a liberação da porta SSH
-  - A região da _cloud_ em que será provisionada a instância
-- **Outputs:** A execução deve imprimir o IP público da instância
+- [Terraform CLI](https://www.terraform.io/downloads.html) (recomendado: v1.4+)
+- Conta e credenciais configuradas do provedor que você irá usar (ex: AWS)
+
+---
+
+## ⚙️ Configuração
+
+1. **Clone o repositório**:
+
+```bash
+git clone git@github.com:Rafael-Souza98/desafios-devops.git
+cd desafio-devops/terraform
+```
+
+2. Crie um arquivo **terraform.tfvars** e preencha com as variáveis conforme o exemplo do arquivo [terraform.tfvars.example](terraform.tfvars.example), adicionando o IP da sua máquina e a região onde você deseja criar o recurso.
+
+3. Rode o terraform init e depois o terraform apply
+```bash
+terraform init
+terraform apply -auto-approve
+```
 
 
-## Extras
 
-- Pré-instalar o docker na instância que suba automáticamente a imagem do [Apache](https://hub.docker.com/_/httpd/), tornando a página padrão da ferramenta visualizável ao acessar o IP público da instância
-- Utilização de módulos do Terraform
 
-## Notas
-- Pode se utilizar tanto AWS quanto GCP (Google Cloud), não é preciso executar o teste em ambas, somente uma.
-- Todos os recursos devem ser criados utilizando os créditos gratuitos da AWS/GCP.
-- Não esquecer de destruir os recursos após criação e testes do desafio para não haver cobranças ou esgotamento dos créditos.
+
