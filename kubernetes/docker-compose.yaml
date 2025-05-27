@@ -1,0 +1,11 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app-node
+    environment:
+      - NAME=Rafael
+    ports:
+      - 3000:3000
+    

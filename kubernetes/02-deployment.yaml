@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+      - name: app-node
+        image: app-node:1.0
+        imagePullPolicy: Never
+        env:
+          - name: NAME
+            valueFrom:
+              configMapKeyRef:
+                name: app-configmap
+                key: NAME
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 200m
+            memory: 100Mi
+          requests:
+            cpu: 100m
+            memory: 50Mi
